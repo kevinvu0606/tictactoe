@@ -43,3 +43,30 @@ h1 {
 .bottom {
   border-bottom: none;
 }
+
+.whichWinner {
+  font-size: 50px;
+  font-family: "Dancing Script"
+}
+
+.restart{
+  background: transparent;
+  border: 1px solid black;
+  height: 50px;
+  margin: 20px;
+  font-family: "Dancing Script";
+  font-size: 30px
+}
+
+.numberOfGames {
+  font-family: "Dancing Script";
+  font-size: 30px;
+}
+
+.winCounter {
+  display: flex;
+  justify-content: center;
+  font-family: "Dancing Script";
+  font-size: 15px;
+  gap: 10px;
+}

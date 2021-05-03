@@ -18,6 +18,17 @@ const winningConditions = [
   [0, 4, 8],
   [2, 4, 6]
 ];
+let gameCounterDisplay = document.querySelector('.gamesPlayed');
+let gameCounter = 0 ;
+gameCounterDisplay.innerText = gameCounter;
+
+let gamesXWon = document.querySelector('.gamesXWon')
+let xWinCounter = 0;
+gamesXWon.innerText = xWinCounter;
+
+let gamesOwon = document.querySelector('.gamesOWon')
+let oWinCounter = 0;
+gamesOwon.innerText = oWinCounter;
 
 //1- function for player clicking
 //Need to make sure that the box that has been clicked is blank 
@@ -39,7 +50,7 @@ function playerClick(clickedBoxEvent) {
   } else if (currentPlayer === "O"){
     clickedBox.style.color = 'blue';
   }
-  
+
   checkResult();
   
 }
@@ -67,7 +78,15 @@ function checkResult() {
   }
 
   if (roundWon == true) {
-    alert(currentPlayer + ' has Won!!!!');
+    document.querySelector('.whichWinner').innerText = currentPlayer + ' has won!!';
+    if (currentPlayer == "X"){
+      xWinCounter ++;
+      gamesXWon.innerText = xWinCounter;
+    } else if (currentPlayer == "O"){
+      oWinCounter ++;
+      gamesOwon.innerText = oWinCounter;
+    }
+    
     return;
   }
 
@@ -89,4 +108,8 @@ function restartGame() {
   currentPlayer = "X";
   boardStatus = ["", "", "", "", "", "", "", "", ""];
   document.querySelectorAll('.box').forEach(box => box.innerHTML = "");
+  document.querySelector('.whichWinner').innerText = "";
+  gameCounter ++
+  gameCounterDisplay.innerText = gameCounter;
+
 }
