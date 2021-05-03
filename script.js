@@ -20,19 +20,22 @@ const winningConditions = [
 //declare variables x , board status, is the game active and a display to show the currentgamestatus
 let currentPlayer = "X"
 let boardStatus = ["", "", "", "", "", "", "", "", ""];
-let gameActive = true;
 
 //1- function for player clicking
 //Need to make sure that the box that has been clicked is blank 
 // Also need to create two variables to be passed into the updateBoard function and the checkResult function.
 function playerClick(clickedBoxEvent) {
   let clickedBox = clickedBoxEvent.target;
-  let clickedBoxIndex = parseInt(clickedBox.getAttribute('data-cell-index'));
+  let clickedBoxIndex = parseInt(clickedBox.getAttribute('data-box-number'));
   if (boardStatus[clickedBoxIndex] !== "" ) {
       return;
   }
   //now we send the clickedBox and ClickedBoxIndex to our functions to update the board + check if anyone has won
-
+  if (currentPlayer === "X"){
+    clickedBox.style.color = 'red';
+  } else if (currentPlayer === "O"){
+    clickedBox.style.color = 'blue';
+  }
   updateBoard(clickedBox, clickedBoxIndex);
   checkResult();
  
@@ -69,7 +72,6 @@ function checkResult() {
 
   if (roundWon == true) {
     alert(currentPlayer + ' has Won!!!!');
-    gameActive = false;
     return;
   }
 
@@ -78,12 +80,16 @@ function checkResult() {
 
 //4 - function to have player alternate clicking between "x" and "o"
 function changeTurn() {
-  currentPlayer = currentPlayer === "X" ? "O" : "X";
+  //currentPlayer = currentPlayer === "X" ? "O" : "X";
+  if (currentPlayer == 'X'){
+    currentPlayer = "O" ;
+  } else if (currentPlayer == "O"){
+    currentPlayer = "X"
+  }
 }
 
 //function to restart the game//
 function restartGame() {
-  gameActive = true;
   currentPlayer = "X";
   boardStatus = ["", "", "", "", "", "", "", "", ""];
   document.querySelectorAll('.box').forEach(box => box.innerHTML = "");

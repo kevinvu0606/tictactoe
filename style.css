@@ -1,3 +1,6 @@
+@import url(https://fonts.googleapis.com/css?family=Dancing+Script);
+
+
 section {
   text-align: center;
 }
@@ -10,7 +13,17 @@ section {
 .box {
   width: 100px;
   height: 100px;
-  border: 1px solid #333333;
+  border: 4px solid #333333;
   cursor: pointer;
   font-size: 60px;
+}
+
+body {
+  background-image: linear-gradient(to left,rgb(186, 204, 248) , rgb(0, 153, 255));
+}
+
+h1 {
+  font-size: 100px;
+  font-family: 'Dancing Script';
+
 }
