@@ -70,3 +70,10 @@ h1 {
   font-size: 15px;
   gap: 10px;
 }
+
+.gamesPlayed { 
+  display: inline-block;
+  margin: 0 auto;
+  width:  125px;
+  border: 3px solid black;
+}

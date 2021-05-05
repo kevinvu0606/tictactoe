@@ -12,3 +12,8 @@ Plan:
 7. If it matches we dislpay a message
 8. if we dont match, continue the game
 9. Also change the assignement from X - > 0 
+
+
+Bonus
+add a counter for games played and winner
+add ai

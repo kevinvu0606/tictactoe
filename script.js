@@ -7,6 +7,7 @@ for (let i=0; i < boxButton.length; i++){
 }
 document.querySelector('.restart').addEventListener('click', restartGame);
 let currentPlayer = "X"
+//board status is the status of the board but the user doesnt see this
 let boardStatus = ["", "", "", "", "", "", "", "", ""];
 const winningConditions = [
   [0, 1, 2],
@@ -18,6 +19,8 @@ const winningConditions = [
   [0, 4, 8],
   [2, 4, 6]
 ];
+
+//Game Counters
 let gameCounterDisplay = document.querySelector('.gamesPlayed');
 let gameCounter = 0 ;
 gameCounterDisplay.innerText = gameCounter;
@@ -29,6 +32,10 @@ gamesXWon.innerText = xWinCounter;
 let gamesOwon = document.querySelector('.gamesOWon')
 let oWinCounter = 0;
 gamesOwon.innerText = oWinCounter;
+
+let gamesDrawn = document.querySelector('.gamesDraw')
+let drawCounter = 0;
+gamesDrawn.innerText = drawCounter;
 
 //1- function for player clicking
 //Need to make sure that the box that has been clicked is blank 
@@ -76,7 +83,7 @@ function checkResult() {
           break
       }
   }
-
+  //Display Winning Message and also increase counter
   if (roundWon == true) {
     document.querySelector('.whichWinner').innerText = currentPlayer + ' has won!!';
     if (currentPlayer == "X"){
@@ -89,27 +96,31 @@ function checkResult() {
     
     return;
   }
-
-  changeTurn();
-}
-
-//4 - function to have player alternate clicking between "x" and "o"
-function changeTurn() {
-  //currentPlayer = currentPlayer === "X" ? "O" : "X";
+  //Need an if condition to check if the board has been filled with no winner then we can display a draw message. gameDraw variable will be boolean and come back true or false. If the board has been filled but no winner has been determined it will be true. With true we can use another if statement to display a draw message
+  let gameDraw = !boardStatus.includes("")
+  if (gameDraw === true){
+    drawCounter ++
+    gamesDrawn.innerText = drawCounter;
+    document.querySelector('.whichWinner').innerText = 'Draw! No Winner'
+  }
+  //This will change the player marker from X to O
   if (currentPlayer == 'X'){
     currentPlayer = "O" ;
   } else if (currentPlayer == "O"){
     currentPlayer = "X"
-  }
+  };
 }
+
 
 //function to restart the game//
 function restartGame() {
   currentPlayer = "X";
   boardStatus = ["", "", "", "", "", "", "", "", ""];
-  document.querySelectorAll('.box').forEach(box => box.innerHTML = "");
-  document.querySelector('.whichWinner').innerText = "";
+  let restartBoxButtons = document.querySelectorAll('.box');
+  for (let i = 0 ; i < restartBoxButtons.length; i ++){
+    restartBoxButtons[i].innerHTML = "";
+  }
+  document.querySelector('.whichWinner').innerHTML = "";
   gameCounter ++
   gameCounterDisplay.innerText = gameCounter;
-
 }
