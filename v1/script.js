@@ -102,10 +102,13 @@ function checkResult() {
   }
   //Need an if condition to check if the board has been filled with no winner then we can display a draw message. gameDraw variable will be boolean and come back true or false. If the board has been filled but no winner has been determined it will be true. With true we can use another if statement to display a draw message
   let gameDraw = !boardStatus.includes("")
-  if (gameDraw === true){
-    drawCounter ++
-    gamesDrawn.innerText = drawCounter;
-    document.querySelector('.whichWinner').innerText = 'Draw! No Winner'
+  if (roundWon === false) {
+    if (gameDraw === true){
+      drawCounter ++
+      gamesDrawn.innerText = drawCounter;
+      document.querySelector('.whichWinner').innerText = 'Draw! No Winner'
+      roundWon = true;
+    }
   }
   //This will change the player marker from X to O
   if (currentPlayer == 'X'){
