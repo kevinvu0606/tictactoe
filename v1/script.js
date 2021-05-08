@@ -20,7 +20,7 @@ const winningConditions = [
   [0, 4, 8],
   [2, 4, 6]
 ];
-
+let roundWon = false;
 //Game Counters
 let gameCounterDisplay = document.querySelector('.gamesPlayed');
 let gameCounter = 0 ;
@@ -49,8 +49,10 @@ function playerClick(clickedBoxEvent) {
       return;
   }
   //update the board HTML + the board array (originally blank)
-  boardStatus[clickedBoxIndex] = currentPlayer;
-  clickedBox.innerHTML = currentPlayer;
+  if (roundWon === false){
+    boardStatus[clickedBoxIndex] = currentPlayer;
+    clickedBox.innerHTML = currentPlayer;
+  }
 
   //add color to our X and O
   if (currentPlayer === "X"){
@@ -64,25 +66,26 @@ function playerClick(clickedBoxEvent) {
 }
 //3 - function to check if we won
 function checkResult() {
-  let roundWon = false;
-  for (let i = 0; i <= 7; i++) {
-      const winCondition = winningConditions[i];
-      //e.g for i = 0, winCondition = [0, 1, 2]
-      let a = boardStatus[winCondition[0]];
-      // e.g a = boardStatus[0]
-      let b = boardStatus[winCondition[1]];
-      //eg b = boardStatus[1]
-      let c = boardStatus[winCondition[2]];
-      // eg c = boardStatus[2]
-      //next we check if a=b=c as if they all have 'x' they will equal.
-      //first statement checks if they have any blanks which means we keep continuing
-      if (a === '' || b === '' || c === '') {
-          continue;
-      }
-      if (a === b && b === c) {
-          roundWon = true;
-          break
-      }
+  if (roundWon === false){
+    for (let i = 0; i <= 7; i++) {
+        const winCondition = winningConditions[i];
+        //e.g for i = 0, winCondition = [0, 1, 2]
+        let a = boardStatus[winCondition[0]];
+        // e.g a = boardStatus[0]
+        let b = boardStatus[winCondition[1]];
+        //eg b = boardStatus[1]
+        let c = boardStatus[winCondition[2]];
+        // eg c = boardStatus[2]
+        //next we check if a=b=c as if they all have 'x' they will equal.
+        //first statement checks if they have any blanks which means we keep continuing
+        if (a === '' || b === '' || c === '') {
+            continue;
+        }
+        if (a === b && b === c) {
+            roundWon = true;
+            break
+        }
+    }
   }
   //Display Winning Message and also increase counter
   if (roundWon == true) {
@@ -117,6 +120,7 @@ function checkResult() {
 function restartGame() {
   currentPlayer = "X";
   boardStatus = ["", "", "", "", "", "", "", "", ""];
+  roundWon = false;
   let restartBoxButtons = document.querySelectorAll('.box');
   for (let i = 0 ; i < restartBoxButtons.length; i ++){
     restartBoxButtons[i].innerHTML = "";
