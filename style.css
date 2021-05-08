@@ -1,0 +1,79 @@
+@import url(https://fonts.googleapis.com/css?family=Dancing+Script);
+
+
+section {
+  text-align: center;
+}
+.gameBoard {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  width: 300px;
+  margin: 0 auto;
+}
+.box {
+  width: 100px;
+  height: 100px;
+  border: 5px solid #333333;
+  cursor: pointer;
+  font-size: 60px;
+}
+
+body {
+  background-image: linear-gradient(to left,rgb(186, 204, 248) , rgb(0, 153, 255));
+}
+
+h1 {
+  font-size: 100px;
+  font-family: 'Dancing Script';
+
+}
+
+.right {
+  border-right: none;
+}
+
+.left {
+  border-left: none;
+}
+
+.top {
+  border-top: none;
+}
+
+.bottom {
+  border-bottom: none;
+}
+
+.whichWinner {
+  font-size: 50px;
+  font-family: "Dancing Script"
+}
+
+.restart{
+  background: transparent;
+  border: 1px solid black;
+  height: 50px;
+  margin: 20px;
+  font-family: "Dancing Script";
+  font-size: 30px
+}
+
+.numberOfGames {
+  font-family: "Dancing Script";
+  font-size: 30px;
+}
+
+.winCounter {
+  display: flex;
+  justify-content: center;
+  font-family: "Dancing Script";
+  font-size: 15px;
+  gap: 10px;
+}
+
+.gamesPlayed { 
+  display: inline-block;
+  margin: 0 auto;
+  width:  125px;
+  border: 3px solid black;
+}
