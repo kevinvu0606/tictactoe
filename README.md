@@ -1,5 +1,8 @@
 Tic Tac Toe Game:
+https://kevinvu0606.github.io/tictactoe/
 
+
+How it works
 1. Game made using HTML, CSS and Javascript
 2. Javascript uses DOM manipulation methods to allow the player to be both "X" and "O"
 3.  Everytime a player click, a funtion is performed to first check if the box is already filled. If it is, then the function breaks otherwise this function continues.
