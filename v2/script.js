@@ -139,6 +139,9 @@ function computerPlays() {
     }
   }
 }
+
+
+
 //function to restart the game//
 function restartGame() {
   boardStatus = ["", "", "", "", "", "", "", "", ""];

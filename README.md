@@ -1,19 +1,17 @@
-# tictactoe
-<player 1>
-<Just play>
+Tic Tac Toe Game:
 
-Plan:
-1. Setup basic HTML + CSS to make it visible
-2. grid to be made up of divs - need to find a way to add numbers to each index
-3. have solutions set as an array
-4. .addeventListener to all the grids so that when we click we run a function (player click)
-5. per each click the function will assign an X 
-6. after each click the function will also check to see if a win-solution has been reached by comparing to our original solutions listed in an array . We can use a loop here to compare the state of the board to our "solutions"
-7. If it matches we dislpay a message
-8. if we dont match, continue the game
-9. Also change the assignement from X - > 0 
+1. Game made using HTML, CSS and Javascript
+2. Javascript uses DOM manipulation methods to allow the player to be both "X" and "O"
+3.  Everytime a player click, a funtion is performed to first check if the box is already filled. If it is, then the function breaks otherwise this function continues.
+4. the function then continues to add the X/O to an array and also use a .innerHTML method to add X to the board. To ensure the correct box matches the correct array position, the div boxes in the HTML are given a 0-8. data-box-number which is then parsed so we receive just the number of the box. After a click, the player will aternate betwee X and O
+5. After every click/turn the array is checked in a for loop against another array containing all the possible win options. If any are matching the for loop ends and a winner is declared via a HTML DOM method
+6.  Counters were also added to keep track of the number of wins per X/O and draws. everytime a winner is delcared we track what the assignment of the array is and if it is an X or an O.
+7.  Draw conditions are also added where if there is no blanks left in the board we declare the board a win. This is placed after the check for win conditions such that if no win conditions are met then the draw condition is triggered.
+
+Bonus:
+1. in V2 , I added a computer player. This is done through picking a random number betwen 0-8 and then add an O while the player click will only be an X and not alternate. 
+2. Also added a check before the computer choice to not allow it to override or replicate choices
+3. Also added a check result to occur both after the player clicks and after the computer picks. This will check if the player wins or the computer wins. 
+3. Added in a gamestate to prevent the counter from doubling up. 
 
 
-Bonus
-add a counter for games played and winner
-add ai
